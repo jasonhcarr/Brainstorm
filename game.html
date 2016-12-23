@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class='game'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Brainstorm</title>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One%7COpen+Sans' rel='stylesheet'>
+    <link href='images/storm_logo.png' rel='icon' type='image/png'>
+    <link href='styles/main.css' rel='stylesheet'>
+  </head>
+  <body class='game'>
+    <header>
+      <img alt='grey storm logo' class='storm' src='images/storm_logo.png'>
+      <img alt='white storm logo' class='lightning' src='images/storm_logo_white.png'>
+      <h1 class='logo' data-shadow='brainstorm'>brainstorm</h1>
+      <nav class='menu'>
+        <ul class='navbar'>
+          <li class='play'>
+            <a class='play active' href='game-haml.html'>Play</a>
+          </li>
+          <li class='leaderboard'>
+            <a class='leaderboard' href='leaderboard-haml.html'>Leaderboard</a>
+          </li>
+          <li class='account'>
+            <a class='account' href='profile-haml.html'>Account</a>
+          </li>
+          <li class='logout'>
+            <a class='logout' href='#'>Logout</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class='menu-small'>
+        <h3 class='nav'>
+          <a class='menu'>Menu</a>
+        </h3>
+        <div class='drop-nav'>
+          <ul>
+            <li class='play'>
+              <a class='play' href='#'>Play</a>
+            </li>
+            <li class='leaderboard'>
+              <a class='leaderboard' href='#'>Leaderboard</a>
+            </li>
+            <li class='account'>
+              <a class='account' href='#'>Account</a>
+            </li>
+            <li class='logout'>
+              <a class='logout' href='#'>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <input class='start-game' type='button' value='Start Game'>
+    <div class='game-container'>
+      <div class='scores-container'>
+        <ul>
+          <li class='solution-score'>STOP THE RAIN!</li>
+          <li class='current-score'>SCORE: <br> 0</li>
+          <li class='personal-best'>PERSONAL BEST: <br> 12,000</li>
+          <li class='high-score'>HIGH SCORE: <br> 20,000</li>
+        </ul>
+      </div>
+      <img id="rainy-background" src="http://www.clker.com/cliparts/e/C/X/Y/j/7/rainy.svg" alt="rain">
+      <img alt='cloud image' class='cloudOne' src='images/clouds_6.png'>
+      <img alt='cloud image' class='cloudTwo' src='images/clouds_5.png'>
+      <img alt='cloud image' class='cloudThree' src='images/clouds_4.png'>
+      <img alt='cloud image' class='cloudFour' src='images/clouds_6.png'>
+      <img alt='cloud image' class='cloudFive' src='images/clouds_1.png'>
+      <img alt='cloud image' class='cloudSix' src='images/clouds_5.png'>
+      <img alt='cloud image' class='cloudSeven' src='images/clouds_6.png'>
+      <img alt='cloud image' class='cloudEight' src='images/clouds_4.png'>
+      <img alt='cloud image' class='cloudNine' src='images/clouds_3.png'>
+      <form class='solution'>
+        <input autocomplete='off' class='solution-field' id='solution-field' placeholder='=' type='text'>
+      </form>
+      <form class='score-submission'>
+        <input class='score-to-send' readonly='readonly' type='text'>
+        <input class='user-id' readonly='readonly' type='text'>
+      </form>
+      <div class='grass-container'>
+        <img class='grass' src='images/grass.png'>
+      </div>
+    </div>
+    <script src='js/vendor/jquery-3.1.1.min.js'></script>
+    <script src='js/game.js'></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+/********** Setup ***********/
+@import 'partials/setup/variables';
+@import 'partials/setup/reset';
+@import 'partials/setup/mixins';
+
+/***** Site Components ******/
+@import 'partials/header';
+@import 'partials/game';
+@import 'partials/index';

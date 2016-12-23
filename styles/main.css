@@ -1,0 +1,556 @@
+/********** Setup ***********/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/***** Site Components ******/
+@keyframes flash {
+  10%,
+    20%,
+    40%,
+    85%,
+    92%,
+    97%,
+    99% {
+    opacity: 1; }
+  0%,
+    100%,
+    81%,
+    88%,
+    95%,
+    98% {
+    opacity: 0; } }
+header {
+  background-color: #009999;
+  height: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: background-color 1.5s ease-in; }
+  header.active {
+    background-color: #474949; }
+  header .lightning,
+  header .storm {
+    height: 65px;
+    margin: 7.5px 0 0 30px;
+    float: left; }
+    @media only screen and (max-width: 600px) {
+      header .lightning,
+      header .storm {
+        height: 35px;
+        margin: 22.5px 0 0 10px; } }
+  header .lightning {
+    display: none;
+    animation: flash 2s .75s ease; }
+  header h1 {
+    color: #f1ebe5;
+    font-size: 70px;
+    margin-left: 20px;
+    line-height: 80px;
+    font-family: "Fredoka One", "Arial Rounded MT Bold", Gadget, sans-serif, cursive;
+    float: left;
+    text-shadow: 0 3.34px 2.224px #717C89, 0 -2px 1px #fff;
+    transition: all 1.5s ease;
+    z-index: 5; }
+    @media only screen and (max-width: 660px) {
+      header h1 {
+        font-size: 50px; } }
+    @media only screen and (max-width: 600px) {
+      header h1 {
+        font-size: 35px;
+        margin-left: 10px; } }
+  header:hover h1 {
+    text-shadow: none;
+    color: #677C99; }
+  header nav.menu {
+    width: 40%;
+    float: right;
+    height: 100%; }
+    @media only screen and (max-width: 1100px) {
+      header nav.menu {
+        display: none; } }
+    header nav.menu li {
+      float: left;
+      font-size: 22px;
+      text-align: center;
+      margin-top: 29px;
+      margin-right: 45px;
+      font-family: 'Lato', sans-serif; }
+      header nav.menu li:last-child {
+        margin-right: 20px; }
+      header nav.menu li a {
+        text-decoration: none;
+        color: black; }
+        header nav.menu li a.active {
+          color: white; }
+      @media only screen and (max-width: 1180px) {
+        header nav.menu li {
+          font-size: 20px; } }
+      @media only screen and (max-width: 1100px) {
+        header nav.menu li {
+          float: none;
+          margin-top: 5px;
+          text-align: right; } }
+
+nav.menu-small {
+  width: 15%;
+  float: right;
+  height: 100%;
+  display: none;
+  transition: all 1.5s ease; }
+  @media only screen and (max-width: 900px) {
+    nav.menu-small {
+      width: 20%; } }
+  @media only screen and (max-width: 660px) {
+    nav.menu-small {
+      width: 25%; } }
+  @media only screen and (max-width: 600px) {
+    nav.menu-small {
+      width: 35%; } }
+  nav.menu-small h3 {
+    line-height: 80px;
+    font-family: 'Lato', sans-serif;
+    font-size: 28px; }
+    @media only screen and (max-width: 600px) {
+      nav.menu-small h3 {
+        font-size: 22px;
+        text-indent: 45px; } }
+    nav.menu-small h3 a {
+      cursor: pointer; }
+      nav.menu-small h3 a.active {
+        color: #FEFBF7; }
+  @media only screen and (max-width: 1100px) {
+    nav.menu-small {
+      display: block; } }
+  nav.menu-small div.drop-nav {
+    display: none;
+    background: #333;
+    margin-right: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: background 1.5s ease;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black; }
+    nav.menu-small div.drop-nav.active {
+      display: block;
+      z-index: 9999; }
+    nav.menu-small div.drop-nav li {
+      padding-top: 10px; }
+      nav.menu-small div.drop-nav li:last-child {
+        padding-bottom: 10px; }
+      nav.menu-small div.drop-nav li a {
+        text-decoration: none;
+        color: #FEFBF7;
+        font-family: 'Lato', sans-serif;
+        padding-left: 10px;
+        font-size: 18px; }
+        nav.menu-small div.drop-nav li a:hover {
+          color: #F4442E; }
+
+body.game {
+  background-image: url("../../images/weather.png");
+  background-position: center;
+  background-color: #bcf2ff;
+  height: 100%;
+  transition: background 1.5s ease-in; }
+  body.game.active {
+    background-color: #677c99;
+    background-image: none; }
+
+.start-game {
+  background-color: #F4442E;
+  position: absolute;
+  border-radius: 10px;
+  height: 110px;
+  width: 275px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5em;
+  color: #FEFBF7;
+  z-index: 1; }
+
+#rainy-background {
+  object-fit: cover;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  float: left;
+  position: absolute;
+  transition: opacity 60s ease-in;
+  z-index: -3; }
+  #rainy-background.active {
+    opacity: 1; }
+
+.game-container {
+  width: 75%;
+  height: 88vh;
+  margin: 15px 12.5%;
+  background: linear-gradient(to bottom, #677C99 0%, #8cb3d9 100%);
+  border: black 3px solid;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  z-index: -3;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black; }
+  .game-container .cloudOne {
+    left: -2%;
+    z-index: 1;
+    height: 175px;
+    transform: rotate(180deg);
+    position: absolute;
+    visibility: hidden; }
+    .game-container .cloudOne.active {
+      visibility: visible;
+      -webkit-animation: cloudy1 1.5s;
+      -moz-animation: cloudy1 1.5s;
+      -o-animation: cloudy1 1.5s; }
+  .game-container .cloudTwo {
+    top: -25px;
+    left: 90%;
+    z-index: 0;
+    transform: rotate(180deg);
+    height: 175px;
+    position: absolute;
+    opacity: .7;
+    visibility: hidden; }
+    .game-container .cloudTwo.active {
+      -webkit-animation: cloudy1 1.5s;
+      -moz-animation: cloudy1 1.5s;
+      -o-animation: cloudy1 1.5s;
+      visibility: visible; }
+  .game-container .cloudThree {
+    transform: rotate(180deg);
+    top: -20px;
+    left: 75%;
+    z-index: 1;
+    height: 190px;
+    position: absolute;
+    visibility: hidden; }
+    .game-container .cloudThree.active {
+      visibility: visible;
+      -webkit-animation: cloudy3 1.75s ease;
+      -moz-animation: cloudy3 1.75s ease;
+      -o-animation: cloudy3 1.75s ease; }
+  .game-container .cloudFour {
+    transform: rotate(180deg);
+    top: -10px;
+    left: 60%;
+    z-index: 0;
+    height: 190px;
+    position: absolute;
+    opacity: .7;
+    visibility: hidden; }
+    .game-container .cloudFour.active {
+      visibility: visible;
+      -webkit-animation: cloudy2 1.5s ease;
+      -moz-animation: cloudy2 1.5s ease;
+      -o-animation: cloudy2 1.5s ease; }
+  .game-container .cloudFive {
+    transform: rotate(180deg);
+    top: 0;
+    left: 20%;
+    position: absolute;
+    width: 300px;
+    opacity: .5;
+    visibility: hidden; }
+    .game-container .cloudFive.active {
+      visibility: visible;
+      -webkit-animation: cloudy3 1.5s ease;
+      -moz-animation: cloudy3 1.5s ease;
+      -o-animation: cloudy3 1.5s ease; }
+  .game-container .cloudSix {
+    transform: rotate(180deg);
+    top: -10px;
+    left: 40%;
+    z-index: 0;
+    position: absolute;
+    width: 350px;
+    opacity: .8;
+    visibility: hidden; }
+    .game-container .cloudSix.active {
+      visibility: visible;
+      -webkit-animation: cloudy3 1.5s ease;
+      -moz-animation: cloudy3 1.5s ease;
+      -o-animation: cloudy3 1.5s ease; }
+  .game-container .cloudSeven {
+    transform: rotate(180deg);
+    top: -10px;
+    left: 85%;
+    z-index: -1;
+    position: absolute;
+    width: 350px;
+    opacity: .8;
+    visibility: hidden; }
+    .game-container .cloudSeven.active {
+      visibility: visible;
+      -webkit-animation: cloudy2 1.5s ease;
+      -moz-animation: cloudy2 1.5s ease;
+      -o-animation: cloudy2 1.5s ease; }
+  .game-container .cloudEight {
+    transform: rotate(180deg);
+    top: -10px;
+    left: 15%;
+    z-index: 2;
+    position: absolute;
+    width: 350px;
+    opacity: .8;
+    visibility: hidden; }
+    .game-container .cloudEight.active {
+      visibility: visible;
+      -webkit-animation: cloudy1 1.25s ease;
+      -moz-animation: cloudy1 1.25s ease;
+      -o-animation: cloudy1 1.25s ease; }
+  .game-container .cloudNine {
+    transform: rotate(180deg);
+    top: -10px;
+    left: 25%;
+    z-index: 1;
+    position: absolute;
+    width: 350px;
+    opacity: .8;
+    visibility: hidden; }
+    .game-container .cloudNine.active {
+      visibility: visible;
+      -webkit-animation: cloudy1 1.5s ease;
+      -moz-animation: cloudy1 1.5s ease;
+      -o-animation: cloudy1 1.5s ease; }
+
+@keyframes cloudy1 {
+  0% {
+    left: -300px;
+    opacity: 0; }
+  50% {
+    left: -100px; }
+  100% {
+    left: inherit;
+    opacity: inherit; } }
+@keyframes cloudy2 {
+  0% {
+    right: -300px;
+    opacity: 0; }
+  50% {
+    right: -100px; }
+  100% {
+    right: inherit;
+    opacity: inherit; } }
+@keyframes cloudy3 {
+  0% {
+    top: -150px;
+    opacity: 0; }
+  50% {
+    top: -50px; }
+  100% {
+    top: inherit;
+    opacity: inherit; } }
+.grass-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 75%;
+  height: 100px;
+  z-index: 5; }
+
+.raindrop {
+  font-size: 1.4em;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  line-height: 6em;
+  color: #68B0AB;
+  position: absolute;
+  top: -113px;
+  float: left;
+  background-image: url("http://i.stack.imgur.com/3dFQ5.png");
+  background-size: cover;
+  padding-bottom: 16px;
+  height: 113px;
+  width: 91px;
+  z-index: -2; }
+
+.solution {
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute; }
+  .solution .solution-field {
+    color: #F4442E;
+    text-align: center;
+    font-size: 3.5em;
+    width: 112px;
+    z-index: 1; }
+
+.score-submission {
+  display: none; }
+
+.scores-container {
+  width: 110%;
+  padding: 6px 3% 0 4%;
+  background: #717C89;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  height: 56px;
+  position: absolute;
+  left: 54%;
+  z-index: 500;
+  transform: translateX(-50%); }
+  .scores-container li {
+    float: left;
+    width: 23%;
+    text-align: center; }
+    .scores-container li.solution-score {
+      padding-top: 16px; }
+
+body.index {
+  background: url("../../images/arches.png");
+  height: 100%;
+  background-blend-mode: lighten;
+  font-family: sans-serif;
+  font-size: 10px; }
+
+.index-container form {
+  background: #717C89;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 100px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black; }
+  @media only screen and (max-width: 450px) {
+    .index-container form {
+      max-width: 300px; } }
+.index-container p {
+  margin: 0 0 3em;
+  position: relative; }
+.index-container label {
+  display: block;
+  font-size: 1.6em;
+  margin: 0 0 20px 0;
+  color: #FEFBF7;
+  font-family: "Open Sans", sans-serif;
+  font-size: 25px; }
+.index-container input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none; }
+.index-container input[type="password"],
+.index-container input[type="email"],
+.index-container input[type="text"] {
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  font-size: 1.6em;
+  padding: 0.8em 0.5em;
+  border-radius: 5px; }
+.index-container input[type="password"]:focus,
+.index-container input[type="email"]:focus,
+.index-container input[type="text"]:focus {
+  background: #fff; }
+.index-container #register {
+  margin: 0; }
+.index-container .login,
+.index-container .register {
+  display: none; }
+.index-container .requirement-left,
+.index-container .requirement-right {
+  border-radius: 5px;
+  display: block;
+  font-size: 1.3em;
+  text-align: center;
+  position: absolute;
+  background: #F4442E;
+  padding: 7px 10px;
+  color: #fff; }
+.index-container .requirement-left {
+  left: -60%;
+  top: 18px;
+  width: 200px; }
+.index-container .requirement-right {
+  left: 105%;
+  top: 25px;
+  width: 160px; }
+.index-container .requirement-left:after,
+.index-container .requirement-right:after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-width: 8px;
+  margin-top: -8px; }
+.index-container .requirement-right:after {
+  right: 100%;
+  border-right-color: #F4442E; }
+.index-container .requirement-left:after {
+  left: 100%;
+  border-left-color: #F4442E; }
+.index-container input[type="button"],
+.index-container input[type="submit"] {
+  background: #FEFBF7;
+  box-shadow: 0 3px 0 0 #C8D5B9;
+  border-radius: 5px;
+  border: none;
+  color: #F4442E;
+  cursor: pointer;
+  display: block;
+  font-size: 2em;
+  line-height: 1.6em;
+  margin: 2em 0 0;
+  outline: none;
+  padding: 0.8em 0;
+  text-shadow: 0 1px #717C89; }
+
+/*# sourceMappingURL=main.css.map */
