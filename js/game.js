@@ -32,6 +32,8 @@ $(document).ready(function() {
     var increaseSpeedInterval = 25000;
     var gameDuration = null;
     var currentGameScore = 0;
+    var raindropSound = new Audio('./audio/WaterDrop.mp3');
+    var thunderSound = new Audio('./audio/Thunder.mp3');
 
     //Start Game button
     $('.start-game').on('click', function() {
@@ -57,13 +59,19 @@ $(document).ready(function() {
         hideCursor();
         runGame();
         setRainSpeed();
+        thunderClap();
+    }
+
+    function thunderClap() {
+      setInterval(function () {
+        thunderSound.play();
+      }, 90000);
     }
 
     function bringInClouds() {
-      $('img').addClass('active');
-      $('.game-container').addClass('active');
-      $('.game').addClass('active');
-      $('header').addClass('active');
+        $('img').addClass('active');
+        $('.game').addClass('active');
+        $('header').addClass('active');
     }
 
     function hideCursor() {
@@ -121,10 +129,13 @@ $(document).ready(function() {
     }
 
     function removeClouds() {
-      $('img').removeClass('active');
-      $('.game-container').removeClass('active');
-      $('.game').removeClass('active');
-      $('header').removeClass('active');
+        $('img').removeClass('active');
+        $('.game').removeClass('active');
+        $('header').removeClass('active');
+        $('#rainy-background').css({
+            'transition': 'none',
+            'opacity': 0
+        });
     }
 
     function checkAnswers(userSolution) {
@@ -138,6 +149,7 @@ $(document).ready(function() {
             if (drop.values.solution === numSolution) {
                 allRaindrops.splice(index, 1);
                 drop.self.remove().stop();
+                raindropSound.play();
                 correctOperators.push(drop.values.operator);
             }
         }
