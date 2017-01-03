@@ -10,6 +10,7 @@ $(document).ready(function() {
         $('.drop-nav').toggleClass('active');
     });
     $('h1.logo').hover(
+
         function() {
             $('.lightning').css('display', 'block');
             $('.storm').css('display', 'none');
@@ -19,8 +20,27 @@ $(document).ready(function() {
             $('.storm').css('display', 'block');
         });
 
-    //GLOBAL VARIABLES
+    //Local Storage for persistence of high scores
+    var storage = {
+        set: function(highScore) {
+            localStorage.setItem('score', JSON.stringify(highScore));
+        },
+        get: function() {
+            var score = localStorage.score === undefined ? false :
+                localStorage.score;
+            return JSON.parse(score);
+        }
+    };
 
+    (function () {
+      var storedScore = storage.get();
+      console.log(storedScore);
+      if (storedScore > 20000) {
+        $('.high-score span').text(storedScore);
+      }
+    })();
+
+    //GLOBAL VARIABLES
     var allRaindrops = [];
     //this is the interval between the creation of new drops
     var interval = 4000;
@@ -34,6 +54,7 @@ $(document).ready(function() {
     var currentGameScore = 0;
     var raindropSound = new Audio('./audio/WaterDrop.mp3');
     var thunderSound = new Audio('./audio/Thunder.mp3');
+    var thunderInterval = null;
 
     //Start Game button
     $('.start-game').on('click', function() {
@@ -52,6 +73,7 @@ $(document).ready(function() {
 
     //Game FUNCTIONS
     function makeItRain() {
+      $('.current-score span').text("0");
         bringInClouds();
         $('.start-game').hide();
         new Raindrop();
@@ -63,9 +85,9 @@ $(document).ready(function() {
     }
 
     function thunderClap() {
-      setInterval(function () {
-        thunderSound.play();
-      }, 90000);
+        thunderInterval = setInterval(function() {
+            thunderSound.play();
+        }, 90000);
     }
 
     function bringInClouds() {
@@ -79,13 +101,12 @@ $(document).ready(function() {
             cursor: 'none'
         });
         setTimeout(function() {
-            $('.game-container').mousemove(function() {
+            $('html').mousemove(function() {
                 $('html').css({
                     cursor: 'auto'
                 });
             });
         }, 300);
-
     }
 
     function setFocus() {
@@ -114,6 +135,7 @@ $(document).ready(function() {
         $('.raindrop').stop().remove();
         $('.solution-field').attr("readonly", true);
         clearInterval(gameDuration);
+        clearInterval(thunderInterval);
         alert("GAME OVER");
         reset();
         removeClouds();
@@ -160,10 +182,10 @@ $(document).ready(function() {
 
     function scoreSolution(operators) {
         var scoreValue = 0;
+        var multiplier = operators.length;
         if (operators.length === 0) {
             scoreValue = "INCORRECT!";
         } else {
-            var multiplier = operators.length;
             for (var index = 0; index < operators.length; index++) {
                 switch (operators[index]) {
                     case "+":
@@ -183,20 +205,24 @@ $(document).ready(function() {
                         break;
                 }
             }
-            multiplier = 0;
         }
-        postScore(scoreValue);
+        postScore(scoreValue, multiplier);
     }
 
-    function postScore(scoreValue) {
+    function postScore(scoreValue, multiplier) {
+        var currentHighScore = parseInt($('.high-score span').text());
         if (scoreValue === "INCORRECT!") {
             $('.solution-score').text(scoreValue).css('color', 'red');
         } else {
-            $('.solution-score').text("CORRECT! :" + "\n" + "+" + scoreValue).css('color', 'white');
+            $('.solution-score').html("CORRECT! :" + "<br>" + "+" + scoreValue).css('color', 'white');
             currentGameScore += scoreValue;
-            $('.current-score').text("SCORE :" + "\n" + currentGameScore).css('color', 'white');
+            $('.current-score span').text(currentGameScore);
+            $('.multiplier span').text('X' + multiplier);
+            if (currentGameScore > currentHighScore) {
+                $('.high-score span').text(currentGameScore);
+                storage.set(currentGameScore);
+            }
         }
-
     }
 
     //CONTRUCTORS

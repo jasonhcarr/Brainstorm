@@ -1,4 +1,4 @@
-body.game {
+.game {
   background-image: url('../../images/weather.png');
   background-position: center;
   background-color: rgb(188,242,255);
@@ -302,7 +302,7 @@ body.game {
 
 .scores-container {
   width: 110%;
-  padding: 6px 3% 0 4%;
+  padding: 1.6% 3% 0 4%;
   background: $raven;
   color: white;
   font-family: $opensans;
@@ -310,19 +310,15 @@ body.game {
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
-  height: 56px;
+  height: 55px;
   position: absolute;
   left: 54%;
-  z-index: 500;
+  z-index: 50;
   transform: translateX(-50%);
 
   li {
     float: left;
     width: 23%;
     text-align: center;
-
-    &.solution-score{
-      padding-top: 16px;
-    }
   }
 }

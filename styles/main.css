@@ -429,7 +429,7 @@ body.game {
 
 .scores-container {
   width: 110%;
-  padding: 6px 3% 0 4%;
+  padding: 1.6% 3% 0 4%;
   background: #717C89;
   color: white;
   font-family: "Open Sans", sans-serif;
@@ -437,17 +437,15 @@ body.game {
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
-  height: 56px;
+  height: 55px;
   position: absolute;
   left: 54%;
-  z-index: 500;
+  z-index: 50;
   transform: translateX(-50%); }
   .scores-container li {
     float: left;
     width: 23%;
     text-align: center; }
-    .scores-container li.solution-score {
-      padding-top: 16px; }
 
 body.index {
   background: url("../../images/arches.png");
