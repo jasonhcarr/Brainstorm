@@ -32,12 +32,12 @@ $(document).ready(function() {
         }
     };
 
-    (function () {
-      var storedScore = storage.get();
-      console.log(storedScore);
-      if (storedScore > 20000) {
-        $('.high-score span').text(storedScore);
-      }
+    (function() {
+        var storedScore = storage.get();
+        console.log(storedScore);
+        if (storedScore > 20000) {
+            $('.high-score span').text(storedScore);
+        }
     })();
 
     //GLOBAL VARIABLES
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
     //Game FUNCTIONS
     function makeItRain() {
-      $('.current-score span').text("0");
+        $('.current-score span').text("0");
         bringInClouds();
         $('.start-game').hide();
         new Raindrop();
@@ -91,6 +91,9 @@ $(document).ready(function() {
     }
 
     function bringInClouds() {
+        $('#rainy-background').css({
+            'transition': 'opacity 60s ease-in'
+        });
         $('img').addClass('active');
         $('.game').addClass('active');
         $('header').addClass('active');
